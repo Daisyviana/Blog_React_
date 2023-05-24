@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Typography, Grid, Button} from '@material-ui/core';
 import {Box} from '@mui/material';
 import './Home.css';
 import Carrossel from '../../components/carrossel/Carrosel';
+import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
+import { useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
 
 function Home() {
+    let navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
+    
+    useEffect(() => {
+      if (token == "") {
+          alert("Você precisa estar logado")
+          navigate("/login")
+        }
+    }, [token])
     return (
         <>
         <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -15,12 +28,13 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                        <ModalPostagem />
                         </Box>
                         <Button variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
+                    <img src="https://i.pinimg.com/originals/4d/e9/25/4de925596a451772e2a2ed33c76c94ba.gif" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
                 </Grid>
@@ -28,6 +42,7 @@ function Home() {
             <Grid container style={{ marginTop: "8px" }}>
       <Grid item xs={12}>
         <Carrossel />
+        <TabPostagem/>
       </Grid>
     </Grid>
         </>
