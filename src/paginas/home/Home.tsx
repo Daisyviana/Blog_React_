@@ -1,23 +1,40 @@
 import React, { useEffect } from 'react';
-import {Typography, Grid, Button} from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Typography, Grid, Button } from '@material-ui/core';
+import { Box } from '@mui/material';
+import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { UserState } from '../../store/token/Reducer';
 import './Home.css';
 import Carrossel from '../../components/carrossel/Carrosel';
-import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
-import { useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Home() {
-    let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
-    
-    useEffect(() => {
+  let navigate = useNavigate();
+
+  const token = useSelector<UserState, UserState['tokens']>(
+      (state) => state.tokens
+  )
+
+  useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
+        toast.error('Você precisa estar logado', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
+
           navigate("/login")
-        }
-    }, [token])
+      }
+  }, [token])
+
     return (
         <>
         <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -30,7 +47,9 @@ function Home() {
                         <Box marginRight={1}>
                         <ModalPostagem />
                         </Box>
-                        <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                        <Link to='/postagens' className="text-decorator-none">
+                          <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                        </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >

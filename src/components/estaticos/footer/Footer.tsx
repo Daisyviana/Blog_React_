@@ -5,10 +5,19 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 import {Typography, Grid } from '@material-ui/core';
 import {Box} from '@mui/material';
+import { UserState } from '../../../store/token/Reducer';
+import { useSelector } from 'react-redux';
 
 function Footer() {
-    return (
-        <>
+   
+    const token = useSelector<UserState, UserState['tokens']>(
+        (state) => state.tokens
+    )
+
+    var footerComponent
+
+    if (token !== '') {
+        footerComponent = (
           <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box style={{ backgroundColor: "#000000", height: "120px" }}>
@@ -39,8 +48,13 @@ function Footer() {
                     </Box>
                 </Grid>
             </Grid>
-        </>
+       
         )
     }
-    
+    return (
+        <>
+            {footerComponent}
+        </>
+    )
+}
     export default Footer;
