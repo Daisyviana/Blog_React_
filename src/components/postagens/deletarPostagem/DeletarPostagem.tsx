@@ -51,12 +51,12 @@ function DeletarPostagem() {
         }
 
         function sim() {
+           deleteId(`/postagens/${id}`, {
+            headers: {
+              'Authorization': token
+            }
+          });
           navigate('/postagens')
-            deleteId(`/postagens/${id}`, {
-              headers: {
-                'Authorization': token
-              }
-            });
             toast.success('Postagem deletada com sucesso', {
               position: "top-right",
               autoClose: 2000,

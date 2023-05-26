@@ -93,7 +93,7 @@ function CadastroPostagem() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, {
+            await put(`/postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
@@ -109,7 +109,7 @@ function CadastroPostagem() {
                 progress: undefined,
             });
         } else {
-            post(`/postagens`, postagem, setPostagem, {
+            await post(`/postagens`, postagem, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
