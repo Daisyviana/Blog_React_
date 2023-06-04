@@ -5,7 +5,6 @@ import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaPostagem from '../listapostagem/ListaPostagem';
 import './TabPostagem.css';
 
-
 function TabPostagem() {
   const [value, setValue] = useState('1')
   function handleChange(event: React.ChangeEvent<{}>, newValue: string) {
@@ -46,9 +45,13 @@ function TabPostagem() {
             A jornada de Daisy para se tornar uma desenvolvedora de sucesso não foi fácil, mas sua paixão, perseverança e determinação a levaram além de suas próprias expectativas. Ela provou que os sonhos podem se tornar realidade quando se acredita em si mesma e se dedica a alcançá-los.
 
             E assim, a menina Daisy, que sonhava em ser uma desenvolvedora de sucesso, deixou sua marca no mundo da tecnologia, inspirando gerações futuras a seguirem seus próprios sonhos e a transformarem o mundo através da inovação tecnológica.</Typography>
+        
         </TabPanel>
+
       </TabContext>
+
     </>
   );
 }
+
 export default TabPostagem;
