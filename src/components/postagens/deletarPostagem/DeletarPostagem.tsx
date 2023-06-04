@@ -56,6 +56,7 @@ function DeletarPostagem() {
               'Authorization': token
             }
           });
+          
           navigate('/postagens')
             toast.success('Postagem deletada com sucesso', {
               position: "top-right",
@@ -66,7 +67,9 @@ function DeletarPostagem() {
               draggable: false,
               theme: "colored",
               progress: undefined,
+
           });
+
           }
         
           function nao() {
