@@ -109,7 +109,8 @@ function Perfil() {
                     Compartilhemos conhecimento, cresçamos juntos!
 
                     Atenciosamente,
-                    Day Viana 😊
+
+                    Day Viana!! 😊
                 </p>
 
             </Box>
