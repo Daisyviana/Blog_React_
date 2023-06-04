@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
@@ -22,17 +22,17 @@ function ListaPostagem() {
   let navigate = useNavigate();
 
   useEffect(() => {
-  
-      if (token == "") {
-        toast.error('Você precisa estar logado', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          theme: "colored",
-          progress: undefined,
+
+    if (token == "") {
+      toast.error('Você precisa estar logado', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
       });
       navigate("/login")
 
@@ -57,7 +57,7 @@ function ListaPostagem() {
     <>
       {
         posts.map(post => (
-          <Box m={2} >
+          <Box m={2} style={{ backgroundColor: "#B43DA0", }} >
             <Card variant="outlined">
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
@@ -72,20 +72,27 @@ function ListaPostagem() {
                 <Typography variant="body2" component="p">
                   {post.tema?.descricao}
                 </Typography>
+                <Typography variant="body2" component="p">
+                  Postado por: {post.usuario?.nome}
+                </Typography>
+                <Typography variant="body1" component="p">
+                  Data: {Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' }).format(new Date(post.data))}
+                </Typography>
+
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
                   <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                      <Button style={{ backgroundColor: "#B43DA0", }} variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
                   <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                     <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
+                      <Button style={{ backgroundColor: "#B43DA0", }} variant="contained" size='small' color="secondary">
                         deletar
                       </Button>
                     </Box>

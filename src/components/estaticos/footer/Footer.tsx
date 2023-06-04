@@ -20,29 +20,29 @@ function Footer() {
         footerComponent = (
           <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
-                    <Box style={{ backgroundColor: "#000000", height: "120px" }}>
+                    <Box style={{ backgroundColor: "#B43DA0", height: "120px" }}>
                         <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
-                            <Typography variant="h5" align="center" gutterBottom style={{ color: "white" }}>Siga-nos nas redes sociais </Typography>
+                            <Typography variant="h6" align="center" gutterBottom style={{ color: "white" }}>Siga-me nas redes sociais </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
-                            <a href="https://github.com/Jeanine19" target="_blank">
-                                <GitHubIcon style={{ fontSize: 60, color: "white" }} />
+                            <a href="https://github.com/Daisyviana" target="_blank">
+                                <GitHubIcon style={{ fontSize: 60, color: "#7F027F" }} />
                             </a>
-                            <a href="https://www.instagram.com/jeanine.araujo/" target="_blank">
-                                <InstagramIcon style={{ fontSize: 60, color: "white" }} />
+                            <a href="https://instagram.com/daisy_dkv" target="_blank">
+                                <InstagramIcon style={{ fontSize: 60, color: "#7F027F" }} />
                             </a>
-                            <a href="https://www.linkedin.com/in/jeanine-santiago/" target="_blank">
-                                <LinkedInIcon style={{ fontSize: 60, color: "white" }} />
+                            <a href="https://www.linkedin.com/in/daisyviana" target="">
+                                <LinkedInIcon style={{ fontSize: 60, color: "#7F027F" }} />
                             </a>
                         </Box>
                     </Box>
-                    <Box style={{ backgroundColor: "#000000", height: "60px" }}>
+                    <Box style={{ backgroundColor: "#B43DA0", height: "60px" }}>
                         <Box paddingTop={1}>
-                            <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2023 Jeanine Santiago </Typography>
+                            <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2023 Daisy Kelly Viana </Typography>
                         </Box>
                         <Box>
                             <a target="_blank" href="https://brasil.generation.org">
-                                <Typography variant="subtitle2" gutterBottom style={{ color: "white" }} align="center">brasil.generation.org</Typography>
+                                <Typography variant="subtitle2" gutterBottom style={{ color: "black" }} align="center">brasil.generation.org</Typography>
                             </a>
                         </Box>
                     </Box>

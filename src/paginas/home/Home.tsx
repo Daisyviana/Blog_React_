@@ -48,12 +48,12 @@ function Home() {
                         <ModalPostagem />
                         </Box>
                         <Link to='/postagens' className="text-decorator-none">
-                          <Button variant="outlined" className='botao'>Ver Postagens</Button>
+                          <Button style={{ backgroundColor: "#B43DA0",}}variant="outlined" className='botao'>Ver Postagens</Button>
                         </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://i.pinimg.com/originals/4d/e9/25/4de925596a451772e2a2ed33c76c94ba.gif" alt="" width="500px" height="500px" />
+                    <img src="https://encurtador.com.br/esvEF" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} className='postagens'>
                 </Grid>

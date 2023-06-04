@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/Service';
 import UserLogin from '../../models/UserLogin';
 import { useDispatch } from 'react-redux';
-import { addToken } from '../../store/token/Actions';
+import { addId, addToken } from '../../store/token/Actions';
 import './Login.css';
 import { toast } from 'react-toastify';
 
@@ -25,6 +25,17 @@ function Login() {
         }
     )
 
+
+    const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+
+        id: 0,
+        nome: "",
+        usuario: '',
+        foto: "",
+        senha: '',
+        token: ''
+    })
+
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
             ...userLogin,
@@ -32,18 +43,24 @@ function Login() {
         })
     }
 
+
     useEffect(() => {
-        if (token !== '') {
-            dispatch(addToken(token))
+        if (respUserLogin.token !== "") {
+
+            console.log("Token: " + respUserLogin.token)
+            console.log("ID: " + respUserLogin.id)
+
+            dispatch(addToken(respUserLogin.token))
+            dispatch(addId(respUserLogin.id.toString()))
             navigate('/home')
         }
-    }, [token])
+    }, [respUserLogin.token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
 
         try {
-            await login(`/usuarios/logar`, userLogin, setToken)
+            await login(`/usuarios/logar`, userLogin, setRespUserLogin)
 
             toast.success('Usuário logado com sucesso!', {
                 position: "top-right",
@@ -54,9 +71,9 @@ function Login() {
                 draggable: false,
                 theme: "colored",
                 progress: undefined,
-                });
+            });
         } catch (error) {
-            toast.error('Dados do usuário inconsistentes. Erro ao logar!', {
+            toast.error('Erro ao efetuar login! Verifique os dados do Usuário!', {
                 position: "top-right",
                 autoClose: 4000,
                 hideProgressBar: false,
@@ -65,7 +82,7 @@ function Login() {
                 draggable: false,
                 theme: "colored",
                 progress: undefined,
-                });
+            });
         }
     }
 
@@ -78,7 +95,7 @@ function Login() {
                         <TextField value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
                         <TextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
                         <Box marginTop={2} textAlign='center'>
-                            <Button type='submit' variant='contained' color='primary'>
+                            <Button style={{ backgroundColor: "#B43DA0", }} type='submit' variant='contained' color='primary'>
                                 Logar
                             </Button>
                         </Box>
