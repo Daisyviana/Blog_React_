@@ -111,13 +111,12 @@ function Perfil() {
                     Atenciosamente,
 
                     Day Viana!! 😊
-
+                    
                 </p>
 
             </Box>
         </Box>
-
     )
 }
 
-export default Perfil
+export default Perfil;
