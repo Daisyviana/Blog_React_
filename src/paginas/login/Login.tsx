@@ -39,7 +39,7 @@ function Login() {
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
             ...userLogin,
-            [e.target.name]: e.target.value
+            [e.target.nome]: e.target.value
         })
     }
 
