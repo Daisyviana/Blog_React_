@@ -19,7 +19,9 @@ function Login() {
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             id: 0,
+            nome: "",
             usuario: '',
+            foto: "",
             senha: '',
             token: ''
         }
