@@ -37,11 +37,11 @@ function Login() {
         senha: '',
         token: ''
     })
-
+    /// <reference lib="dom" />
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
             ...userLogin,
-            [e.target.nome]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
