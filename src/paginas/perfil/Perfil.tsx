@@ -90,8 +90,7 @@ function Perfil() {
             <Box className='card-container-info'>
                 <Box>
                     <h1>{user.nome}</h1>
-                    <h3>{user.usuario}</h3>
-                    <hr />
+
                 </Box>
 
                 <p className='card-container-texto'>
@@ -112,7 +111,7 @@ function Perfil() {
                     Atenciosamente,
 
                     Day Viana!! 😊
-                    
+
                 </p>
 
             </Box>

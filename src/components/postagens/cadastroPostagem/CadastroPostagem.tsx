@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
+import { Button, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from "@material-ui/core"
 import './CadastroPostagem.css';
 import { useNavigate, useParams } from 'react-router-dom'
 import Tema from '../../../models/Tema';
@@ -217,7 +217,7 @@ function CadastroPostagem() {
                         }
                     </Select>
                     <FormHelperText>Escolha um tema para a postagem</FormHelperText>
-                    <Button type="submit" variant="contained" color="primary"
+                    <Button type="submit" variant="contained" color="primary" style={{ backgroundColor: "#B43DA0", }}
                         disabled={postagem.titulo.length == 0 || postagem.texto.length == 0 || postagem.tema?.id == 0}
                     >
                         {postagem.id ? 'Atualizar' : 'Cadastrar'}

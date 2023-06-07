@@ -15,9 +15,11 @@ import { Provider } from 'react-redux';
 import store from './store/Store';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AtualizarUsuario from './components/usuarios/atualizarusuario/AtualizarUsuario';
+import ListaPostagemPorTitulo from './components/postagens/listapostagemportitulo/ListaPostagemPorTitulo';
+import Perfil from './paginas/perfil/Perfil';
 
-
-function App() {
+function App(): JSX.Element {
 
 
   return (
@@ -39,6 +41,9 @@ function App() {
             <Route path="/formularioTema/:id" element={<CadastroTema />} />
             <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
             <Route path="/deletarTema/:id" element={<DeletarTema />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/atualizarusuario" element={<AtualizarUsuario />} />
+            <Route path="/postagensportitulo" element={<ListaPostagemPorTitulo />} />
           </Routes>
         </div>
         <Footer />

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UserState } from '../../../store/token/Reducer';
 import { addToken } from '../../../store/token/Actions';
 import './Navbar.css'
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function Navbar() {
     let navigate = useNavigate();
@@ -18,9 +18,9 @@ function Navbar() {
         (state) => state.tokens
     )
 
-    function goLogout(){
+    function goLogout() {
         dispatch(addToken(''));
-        toast.info('Usuário deslogado', {
+        toast.info('Usuário Deslogado', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -36,8 +36,8 @@ function Navbar() {
     var navbarComponent
 
     if (token !== '') {
-        navbarComponent = (
-            <AppBar position="static" style={{ backgroundColor: 'black'}}>
+        navbarComponent =
+            <AppBar position="static" style={{ backgroundColor: 'black', opacity: 1 }}>
                 <Toolbar variant="dense">
                     <Box className='cursor'>
                         <Typography variant="h5" color="inherit">
@@ -45,7 +45,7 @@ function Navbar() {
                         </Typography>
                     </Box>
                     <Box display="flex" justifyContent="start">
-                        <Link to="/home" className="text-decorator-none">
+                        <Link to="/Home" className="text-decorator-none">
                             <Box mx={1} className='cursor'>
                                 <Typography variant="h6" color="inherit">
                                     Home
@@ -73,6 +73,21 @@ function Navbar() {
                                 </Typography>
                             </Box>
                         </Link>
+                        <Link to="/postagensportitulo" className="text-decorator-none">
+                            <Box mx={1} className='cursor'>
+                                <Typography variant="h6" color="inherit">
+                                    Postagens por título
+                                </Typography>
+                            </Box>
+                        </Link>
+                        <Link to="/perfil" className="text-decorator-none">
+                            <Box mx={1} className='cursor'>
+                                <Typography variant="h6" color="inherit">
+                                    Perfil
+                                </Typography>
+                            </Box>
+                        </Link>
+
                         <Box mx={1} className='cursor' onClick={goLogout}>
                             <Typography variant="h6" color="inherit">
                                 Logout
@@ -81,7 +96,7 @@ function Navbar() {
                     </Box>
                 </Toolbar>
             </AppBar>
-        )
+            
     }
 
     return (

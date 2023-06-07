@@ -123,14 +123,14 @@ function ListaPostagemPorTitulo() {
                                             <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                                                 <Box mx={1}>
                                                     <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                                                        atualizar
+                                                        Atualizar
                                                     </Button>
                                                 </Box>
                                             </Link>
                                             <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                                                 <Box mx={1}>
                                                     <Button variant="contained" size='small' color="secondary">
-                                                        deletar
+                                                        Deletar
                                                     </Button>
                                                 </Box>
                                             </Link>
@@ -145,4 +145,4 @@ function ListaPostagemPorTitulo() {
     );
 }
 
-export default ListaPostagemPorTitulo
+export default ListaPostagemPorTitulo;

@@ -7,58 +7,60 @@ import { Box } from '@mui/material';
 import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserState } from '../../../store/token/Reducer';
 import { toast } from 'react-toastify';
+import { addToken } from '../../../store/token/Actions';
 
 function ListaPostagem() {
-  const [posts, setPosts] = useState<Postagem[]>([])
-  // const [token, setToken] = useLocalStorage('token');
+  let navigate = useNavigate();
+
+  const [posts, setPosts] = useState<any[]>([]);
+
+  const dispatch = useDispatch()
 
   const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   )
 
-  let navigate = useNavigate();
-
   useEffect(() => {
-
-    if (token == "") {
-      toast.error('Você precisa estar logado', {
-        position: "top-right",
+    if (token === '') {
+      toast.error('Usuário não autenticado!', {
+        position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: "colored",
+        theme: 'colored',
         progress: undefined,
       });
-      navigate("/login")
-
+      navigate('/login');
     }
-  }, [token])
+  }, [token]);
 
-  async function getPost() {
-    await busca('/postagens', setPosts, {
-      headers: {
-        'Authorization': token
+  async function getpost() {
+    try {
+      await busca('/postagens', setPosts, {
+        headers: { Authorization: token },
+      });
+    } catch (error: any) {
+      if (error.response?.status === 403) {
+        dispatch(addToken(''))
       }
-    })
+    }
   }
 
   useEffect(() => {
-
-    getPost()
-
-  }, [posts.length])
+    getpost();
+  }, [posts.length]);
 
   return (
     <>
-      {
-        posts.map(post => (
-          <Box m={2} style={{ backgroundColor: "#B43DA0", }} >
-            <Card variant="outlined">
+      {posts.length === 0 ? (<div className="spinner"></div>) : (
+        posts.map((post) => (
+          <Box marginX={20} m={2} className="boxPost" >
+            <Card >
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
                   Postagens
@@ -84,16 +86,16 @@ function ListaPostagem() {
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
                   <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
-                    <Box mx={1}>
-                      <Button style={{ backgroundColor: "#B43DA0", }} variant="contained" className="marginLeft" size='small' color="primary" >
-                        atualizar
+                    <Box mx={1} >
+                      <Button variant="contained" className="marginLeft" size='small' color="primary" style={{ backgroundColor: "#B43DA0", }} >
+                        Atualizar
                       </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
+                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
-                      <Button style={{ backgroundColor: "#B43DA0", }} variant="contained" size='small' color="secondary">
-                        deletar
+                      <Button variant="contained" size='small' color="secondary" style={{ backgroundColor: "#B43DA0", }}>
+                        Deletar
                       </Button>
                     </Box>
                   </Link>
@@ -102,9 +104,9 @@ function ListaPostagem() {
             </Card>
           </Box>
         ))
-      }
+      )}
     </>
-  )
+  );
 }
 
 export default ListaPostagem;
